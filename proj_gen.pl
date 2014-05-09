@@ -1,0 +1,1 @@
+../syntetic_hq_generator/proj_gen.pl

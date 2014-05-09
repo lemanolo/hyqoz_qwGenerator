@@ -1,0 +1,56 @@
+HSQL="${1}"
+OUTPUTFILE="${2}"
+ALGORITHM="${3}"
+SAFEGENERATION="${4}"
+SELECTION="${5}"
+RECOMPUTING="${6}"
+
+OUTPUTFILENAME_PREFIX="SS_${HSQL}_${ALGORITHM}_${SAFEGENERATION}_${SELECTION}_${RECOMPUTING}"
+OUTPUTFILENAME="output/${OUTPUTFILENAME_PREFIX}.txt"
+OUTPUTFILENAME_CLEAN="output/${OUTPUTFILENAME_PREFIX}_clean.txt"
+OUTPUTFILENAME_UNIQUE="output/${OUTPUTFILENAME_PREFIX}_unique.txt"
+OUTPUTFILENAME_COSTS="output/${OUTPUTFILENAME_PREFIX}_costs.txt"
+
+CLEAN="./clean.sh"
+date="$(date)"
+
+CONFIG_FILE="config.pl"
+> $CONFIG_FILE
+echo "outputFile(${OUTPUTFILE})." >> ${CONFIG_FILE}
+echo "outputFileName('${OUTPUTFILENAME}')." >> ${CONFIG_FILE}
+echo "%%%%%%%%" >> ${CONFIG_FILE}
+echo "algorithm(${ALGORITHM})." >> ${CONFIG_FILE}
+echo "safe_generation(${SAFEGENERATION})." >> ${CONFIG_FILE}
+echo "new_relations_computation(${RECOMPUTING})." >> ${CONFIG_FILE}
+echo "next_relation_selection(${SELECTION})." >> ${CONFIG_FILE}
+
+
+LOADFILE="'load.pl'"
+GOAL="test('${HSQL}',false)"
+EXIT="halt"
+
+COMMAND="gprolog --init-goal [${LOADFILE}] --entry-goal ${GOAL} --query-goal ${EXIT}"
+STATS="tmp/$$.txt"
+LOG="log/${OUTPUTFILENAME_PREFIX}_$$.log"
+echo "${date}\c"
+echo "   PERFORMING "$HSQL "...\c"
+time="$(time (${COMMAND} | tee ${LOG} |grep "stats" > ${STATS} ) 2>&1 >/dev/null)"
+
+stats="$(cat ${STATS})"
+rm ${STATS}
+
+echo "CLEANING ...\c"
+cat ${OUTPUTFILENAME} | grep  "Final E:" | ${CLEAN} | sort > ${OUTPUTFILENAME_CLEAN}
+number_of_qws="$( cat ${OUTPUTFILENAME_CLEAN}| wc -l )"
+echo "DELETING DUPS ...\c"
+cat ${OUTPUTFILENAME_CLEAN} | uniq -c | grep -n "^.*$" >${OUTPUTFILENAME_UNIQUE}
+#cat ${OUTPUTFILENAME_UNIQUE} | awk -F " " '{print $1 $7}' | sed -E "s/cost\(|\)//g" | sed -E "s/:|,/;/g" | sed "s/\./,/g" > ${OUTPUTFILENAME_COSTS}
+cat ${OUTPUTFILENAME_UNIQUE} | awk -F " " '{print $1 $7}' | sed -E "s/cost\(|\)//g" | sed -E "s/:/,/g" > ${OUTPUTFILENAME_COSTS}
+number_of_unique_qws="$( cat ${OUTPUTFILENAME_UNIQUE}| wc -l )"
+
+real_time=`echo $time | awk -F " " '{print $2}'`
+
+
+echo "\t " $HSQL "\t " $stats "\t QWs: " $number_of_qws "\t UniqueQWs: "$number_of_unique_qws "\t Time: " $real_time 
+echo "LOG: ${LOG}"
+

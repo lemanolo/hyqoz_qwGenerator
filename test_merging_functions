@@ -1,0 +1,8 @@
+F1=function(fun_1,[b,a],[a::interests::interest::tag=b::interests::interest::tag],[b::nickname,b::interests::interest::nickname,b::interests::interest::tag,b::interests::interest::score],[b::[nickname,interests::[interest::[nickname,tag,score]]]]),
+F2=function(fun_2,[a,b],[a::nickname='Alice',b::nickname='Bob'],[a::nickname,a::interests::interest::nickname,a::interests::interest::tag,a::interests::interest::score,b::nickname,b::interests::interest::nickname,b::interests::interest::tag,b::interests::interest::score],[a::[nickname,interests::[interest::[nickname,tag,score]]],b::[nickname,interests::[interest::[nickname,tag,score]]]]),
+merge_dtfs(F1,F2,F).
+
+ F1=function(fun_1,[b,a],[a::interests::interest::tag=b::interests::interest::tag],[b::nickname,b::interests::interest::nickname,b::interests::interest::tag,b::interests::interest::score],[b::[nickname,interests::[interest::[nickname,tag,score]]]]),
+F2=function(fun_2,[a,b],[a::nickname='Alice',b::nickname='Bob'],[a::nickname,a::interests::interest::nickname,a::interests::interest::tag,a::interests::interest::score,b::nickname,b::interests::interest::nickname,b::interests::interest::tag,b::interests::interest::score],[a::[nickname,interests::[interest::[nickname,tag,score]]],b::[nickname,interests::[interest::[nickname,tag,score]]]]),
+Functions=[[F1,F2]],
+do_relations(Functions,Rels),Rels\==[].

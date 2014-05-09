@@ -1,0 +1,278 @@
+clear_dtf_ids:-
+	retractall(id(_)).
+
+create_dtf(Type,Aliases,Expression,Projection,Result,Function):-
+	create_id(Type,Aliases,Id),
+	Function=..[Type|[Id,Aliases,Expression,Projection,Result]],
+	assertz(f(Function)).
+
+create_id(Type,Aliases,Id):-
+	clause(id(_),true),!,
+	atom_concat(Prefix,_,Type), atom_length(Prefix,4),!,
+        sort(Aliases,AliasesSorted),
+        append([Prefix,'_'],AliasesSorted,Id_list),
+        %append(Id_list1,['_'],Id_list),
+        concat_all_atoms(Id_list,Id_prefix),	
+	findall(OtherId,(id(OtherId),
+                         atom_concat(Id_prefix,_,OtherId)
+                        ),List_of_ids),
+        length(List_of_ids,L),
+        Suffix is L+1,
+	number_atom(Suffix,SuffixAtom),
+	((Suffix>1, number_atom(Suffix,SuffixAtom), concat_all_atoms([Id_prefix,'_',SuffixAtom],Id),!)
+	 ;
+	 (Suffix=1, Id=Id_prefix,!)
+	),
+	assertz(id(Id)).
+
+create_id(Type,Aliases,Id):-
+	\+clause(id(_),true),!,
+	atom_concat(Prefix,_,Type), atom_length(Prefix,4),!,
+        sort(Aliases,AliasesSorted),
+        append([Prefix,'_'],AliasesSorted,Id_list),
+        concat_all_atoms(Id_list,Id),	
+	assertz(id(Id)).
+
+concat_all_atoms([Atom],Atom):-!.
+concat_all_atoms([Atom|Tail],RAtom):-!,
+	concat_all_atoms(Tail,Suffix),
+	atom_concat(Atom,Suffix,RAtom).
+
+print_function([]):-!.
+print_function([Function|Tail]):-!,
+	print_function(Function),
+	print_function(Tail).
+
+print_function(Function):-!,
+	functor(Function, Name, 5),
+	nl,write(Name),write('('),
+	arg(2,Function,DS),
+	arg(3,Function,F),
+	arg(4,Function,P),
+	arg(5,Function,Result),
+     nl,writeN(1),write('   Aliases: { '),print_DS(DS),write(' },'),nl,
+	writeN(1),write('Expression: { '),print_F(F),write(' }'),nl,
+	writeN(1),write('Projection: { '),print_P(P),write(' }'),nl,
+	writeN(1),write('    Result: { '),print_Result(Result),write(' }'),
+	nl,writeN(1),write(' )').
+
+print_DS([]):-!.
+print_DS([Alias]):-!,
+	write(Alias).
+print_DS([Alias|Tail]):-!,
+	write(Alias),write(', '),
+	print_DS(Tail).
+
+
+print_F([]):-!.
+print_F([Filter]):-!,
+	write(Filter).
+print_F([Filter|Tail]):-!,
+	write(Filter),write(', '),
+	print_F(Tail).
+
+print_P([]):-!.
+print_P([Path]):-!,
+	write(Path).
+print_P([Path|Tail]):-!,
+	write(Path),write(', '),
+	print_P(Tail).
+
+print_Result([]):-!.
+print_Result(Type):-!,
+	print_type(Type).
+print_Result([Type]):-!,
+	print_type(Type).
+print_Result([Type|Tail]):-
+	print_type(Type),
+	print_Result(Tail).
+
+
+
+print_type(DataSet):-
+        do_print_type(DataSet,3).
+
+do_print_type([],_):-!.
+
+do_print_type(DSName::DataSet,N):-
+        atom(DSName),
+        list(DataSet),!,
+        nl,writeN(N),write(DSName),write('::<'),
+        N2 is N+1,
+        do_print_type(DataSet,N2),
+	nl,writeN(N2),write('>').
+
+do_print_type(DSName,N):-
+	\+list(DSName),!,
+        nl,writeN(N),write(DSName).%,write(', ').
+
+do_print_type([Tuple],N):-!,
+        do_print_type(Tuple,N).
+do_print_type([Tuple|Tail],N):-
+        do_print_type(Tuple,N),write(', '),
+        do_print_type(Tail,N).
+
+%do_printdataset([Name::Value|Tail],N):-
+        %list(Value),!,
+        %nl,writeN(N),write(Name),write('::'),
+        %N2 is N+1,
+        %do_printdataset(Value,N2),
+        %do_printdataset(Tail,N).
+
+%do_printdataset([Name::Value|Tail],N):-
+        %atom(Value),!,
+        %writeN(N),write(Name::Value),
+        %do_printdataset(Tail,N).
+
+print_relation_derivation(OldRelation,NewFunction,OldRelatedRelations,NewRelatedRelations):-
+	OldRelation=..[OldRelType,A,B],
+	%nl,write('         OldRelType: '),write(OldRelType),
+	%nl,write('                  A: '),write(A),
+	%nl,write('                  B: '),write(B),
+	(OldRelType=dependent,  OldRelOp=('>>');
+ 	OldRelType=concurrent, OldRelOp=('><');
+ 	OldRelType=independent,OldRelOp=('||')
+	),
+	findall(_,
+        	  ( member(NewRelatedRel,NewRelatedRelations),
+         	    permutation([NewFunction,C],Perm),
+         	    %nl,write('               Perm: '),write(Perm),
+         	    NewRelatedRel=..[NewRelType|Perm],
+         	    %nl,write('      NewRelatedRel: '),write(NewRelatedRel),
+         	    replace(NewFunction,f,Perm,PermF),
+         	    replace(C,c,PermF,PermFC),
+         	    %NewRelatedRelNormal=..[NewRelType|PermFC],
+         	    %nl,write('NewRelatedRelNormal: '),write(NewRelatedRelNormal),
+         	    PermFC=[LeftFC,RightFC],
+         	    (NewRelType=dependent,  NewRelOp=('>>');
+          	    NewRelType=concurrent, NewRelOp=('><');
+          	    NewRelType=independent,NewRelOp=('||')
+         	    ),
+		    nl,write('RELS@'),write('f=@'),write(a),write('@'),write(OldRelOp),write('@'),write(b),write('@'),
+         	   % nl,write('RELS@'),
+        	    findall(_,( member(OldRelRelation,OldRelatedRelations),
+         	                (      (permutation([A,C],PermRel),
+                 	                %nl,write('              PermRel: '),write(PermRel),
+                 	                OldRelRelation=..[OldRelRelationType|PermRel],
+                 	                %nl,write('    OldRelRelation:'),write(OldRelRelation),
+                 	                replace(A,a,PermRel,PermRel1)
+                 	                )
+                 	                ;
+                 	                (permutation([B,C],PermRel),
+                 	                %nl,write('              PermRel: '),write(PermRel),
+                 	                OldRelRelation=..[OldRelRelationType|PermRel],
+                 	                %nl,write('    OldRelRelation:'),write(OldRelRelation),
+                 	                replace(B,b,PermRel,PermRel1)
+                 	                )
+         	                ),
+              	                replace(C,c,PermRel1,PermRelC),
+              	                PermRelC=[LeftOldRelatedRel,RightOldRelatedRel],
+              	                (OldRelRelationType=dependent,  OldRelatedRelOp=('>>');
+               	                OldRelRelationType=concurrent, OldRelatedRelOp=('><');
+               	                OldRelRelationType=independent,OldRelatedRelOp=('||')
+              	                ),
+              	                write('@'),write(LeftOldRelatedRel),write('@'),write(OldRelatedRelOp),write('@'),write(RightOldRelatedRel),write('@&')
+        	              ),_),
+         	    write('@@-->@@'),write(LeftFC),write('@'),write(NewRelOp),write('@'),write(RightFC)
+         	    %nl,write('             PermRel1:'),write(PermRel1),
+         	    %nl,write('             PermRelC:'),write(PermRelC),
+         	    %nl,write(' OlRelatedRelNormal:'),write(OlRelatedRelNormal)
+        	  ),_).
+
+print_relation_short(Relation):-
+	print_relation_short(Relation,Output),
+	write(Output).
+
+print_relation_short(Relation,Output):-
+	Relation=..[Type,F1,F2],
+	F1=..[_|[Id1|_]],
+	F2=..[_|[Id2|_]],
+	((Type=dependency,  !, Op=('>>') );
+	 (Type=concurrency, !, Op=('><') );
+	 (Type=independency,!, Op=('||') )
+	),
+	concat_all_atoms([Id1,'@',Op,'@',Id2],Output),%,'@',(Aliases1),'@',(Expression1),'@',(Projection1),'@',(Aliases2),'@',(Expression2),'@',(Projection2)],Output),
+	write(Output).
+
+print_relation([]):-!.
+print_relation([Relation|Tail]):-!,
+	print_relation(Relation),
+	nl,print_relation(Tail).
+print_relation(Relation):-
+	\+list(Relation),!,
+	functor(Relation,RName,2),
+	arg(1,Relation,F1),
+	arg(2,Relation,F2),
+	nl,write(RName),write('('),
+	writeN(1),print_function(F1),
+	writeN(1),print_function(F2),
+	nl,write(')').
+
+print_matrix_of_relations(Relations):-
+	findall(_,(member(Rel,Relations),assertz(Rel)),_),
+	findall([F1,F2],(member(R,Relations),R=..[Rel|[F1,F2]]),Functions_lists),
+	unionAll(Functions_lists,Functions),
+	sort(Functions,FunctionsSorted),
+	do_print_matrix_of_relations(FunctionsSorted,FunctionsSorted),
+	nl,write('FUNCTIONS\t'),print_header(FunctionsSorted),
+	retractall(independent(_,_)),
+	retractall(concurrent(_,_)),
+	retractall(dependent(_,_)),
+	nl,print_all_functions(FunctionsSorted).
+
+do_print_matrix_of_relations(_,[]):-!.
+do_print_matrix_of_relations(Functions,[F|Tail]):-!,
+	arg(1,F,Id),
+	nl,write(Id),write('\t'),print_row(F,Functions),
+	do_print_matrix_of_relations(Functions,Tail).
+
+print_all_functions([]):-!.
+print_all_functions([F|Tail]):-
+	nl,write(F),
+	print_all_functions(Tail).
+
+print_row(_,[]):-!.
+print_row(F,[OtherF]):-!,
+	findall('>>',   (clause(dependent(F,OtherF),true),   dependent(F,OtherF)),  Dependent),
+	findall('><',  (clause(concurrent(F,OtherF),true),  concurrent(F,OtherF)), Concurrent1),
+	findall('><',  (clause(concurrent(OtherF,F),true),  concurrent(OtherF,F)), Concurrent2),
+	findall('||', (clause(independent(F,OtherF),true), independent(F,OtherF)),Independent1),
+	findall('||', (clause(independent(OtherF,F),true), independent(OtherF,F)),Independent2),
+	unionAll([Dependent,Concurrent1,Concurrent2,Independent1,Independent2],Relations),
+	print_cell(F,OtherF,Relations).
+
+print_row(F,[OtherF|Tail]):-!,
+	findall('>>',   (clause(dependent(F,OtherF),true),   dependent(F,OtherF)),  Dependent),
+	findall('><',  (clause(concurrent(F,OtherF),true),  concurrent(F,OtherF)), Concurrent1),
+	findall('><',  (clause(concurrent(OtherF,F),true),  concurrent(OtherF,F)), Concurrent2),
+	findall('||', (clause(independent(F,OtherF),true), independent(F,OtherF)),Independent1),
+	findall('||', (clause(independent(OtherF,F),true), independent(OtherF,F)),Independent2),
+	unionAll([Dependent,Concurrent1,Concurrent2,Independent1,Independent2],Relations),
+	print_cell(F,OtherF,Relations),write('\t'),
+	print_row(F,Tail).
+	
+
+print_cell(_,_,['>>']):-!,
+	write('>>').
+
+print_cell(F,OtherF,[Relation]):-
+	compare(>,F,OtherF),!,
+	write(Relation).
+
+print_cell(F,OtherF,Relations):-
+	length(Relations,L),
+	L>2,!,
+	compare(>,F,OtherF),!,
+	write(Relations).
+
+
+print_cell(_,_,_):-!.
+
+print_header([]):-!.
+print_header([F]):-!,
+	arg(1,F,Id),
+	write(Id).
+print_header([F|Tail]):-!,
+	arg(1,F,Id),
+	write(Id),write('\t'),
+	print_header(Tail).
