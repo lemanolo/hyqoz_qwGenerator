@@ -1,0 +1,12 @@
+deadlock(Rel,Relations):-
+	Rel=..[_,A,B],
+	R1=..[dependent,A,_],
+	R2=..[dependent,_,B],
+	findall(C,	(member(R1,Relations),member(R2,Relations),
+			 R1=..[dependent,A,C],C\==B,
+			 R2=..[dependent,C,B],C\==A,!
+			),RelsInDeadlock),
+	RelsInDeadlock\==[].
+
+no_deadlock_relations(Relations,NoDeadlockRelations):-
+	findall(Rel,(member(Rel,Relations),\+deadlock(Rel,Relations)),NoDeadlockRelations).

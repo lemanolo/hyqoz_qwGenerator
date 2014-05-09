@@ -1,0 +1,168 @@
+echo " "
+echo "4_1_2 true naive2 unsafe  member  global"
+echo " "
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+sh run.sh 4_1_2 true naive2 unsafe  member  global
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 unsafe  member  local"
+echo ""
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+sh run.sh 4_1_2 true naive2 unsafe  member  local
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 unsafe  next_rel  global"
+echo ""
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  global
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 unsafe  next_rel  local"
+echo ""
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel  local
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 unsafe  next_rel2  global"
+echo ""
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  global
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 unsafe  next_rel2  local"
+echo ""
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+sh run.sh 4_1_2 true naive2 unsafe  next_rel2  local
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 safe  member  global"
+echo ""
+sh run.sh 4_1_2 true naive2 safe  member  global
+sh run.sh 4_1_2 true naive2 safe  member  global
+sh run.sh 4_1_2 true naive2 safe  member  global
+sh run.sh 4_1_2 true naive2 safe  member  global
+sh run.sh 4_1_2 true naive2 safe  member  global
+sh run.sh 4_1_2 true naive2 safe  member  global
+sh run.sh 4_1_2 true naive2 safe  member  global
+sh run.sh 4_1_2 true naive2 safe  member  global
+sh run.sh 4_1_2 true naive2 safe  member  global
+sh run.sh 4_1_2 true naive2 safe  member  global
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 safe  member  local"
+echo ""
+sh run.sh 4_1_2 true naive2 safe  member  local
+sh run.sh 4_1_2 true naive2 safe  member  local
+sh run.sh 4_1_2 true naive2 safe  member  local
+sh run.sh 4_1_2 true naive2 safe  member  local
+sh run.sh 4_1_2 true naive2 safe  member  local
+sh run.sh 4_1_2 true naive2 safe  member  local
+sh run.sh 4_1_2 true naive2 safe  member  local
+sh run.sh 4_1_2 true naive2 safe  member  local
+sh run.sh 4_1_2 true naive2 safe  member  local
+sh run.sh 4_1_2 true naive2 safe  member  local
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 safe  next_rel  global"
+echo ""
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+sh run.sh 4_1_2 true naive2 safe  next_rel  global
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 safe  next_rel  local"
+echo ""
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+sh run.sh 4_1_2 true naive2 safe  next_rel  local
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 safe  next_rel2  global"
+echo ""
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+sh run.sh 4_1_2 true naive2 safe  next_rel2  global
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"
+echo " "
+echo "4_1_2 true naive2 safe  next_rel2  local"
+echo ""
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+sh run.sh 4_1_2 true naive2 safe  next_rel2  local
+echo "/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"

@@ -1,0 +1,55 @@
+relation op1_op1:op1_op1( string op1_op1_i_a?, string op1_op1_o_a!,string op1_op1_o_b!,string op1_op1_o_c!,string op1_op1_o_d!, string op1_op1_o_e!,string op1_op1_o_f!,string op1_op1_o_g!,string op1_op1_o_h!, string op1_op1_o_i!,string op1_op1_o_j!,string op1_op1_o_k!,string op1_op1_o_l!, string op1_op1_o_m!,string op1_op1_o_o!,string op1_op1_o_q!)
+
+relation op2_op2:op2_op2( string op2_op2_i_a?, string op2_op2_o_a!,string op2_op2_o_b!,string op2_op2_o_c!,string op2_op2_o_d!, string op2_op2_o_e!,string op2_op2_o_f!,string op2_op2_o_g!,string op2_op2_o_h!, string op2_op2_o_i!,string op2_op2_o_j!,string op2_op2_o_k!,string op2_op2_o_l!, string op2_op2_o_m!,string op2_op2_o_o!,string op2_op2_o_q!)
+
+relation op3_op3:op3_op3( string op3_op3_i_a?, string op3_op3_o_a!,string op3_op3_o_b!,string op3_op3_o_c!,string op3_op3_o_d!, string op3_op3_o_e!,string op3_op3_o_f!,string op3_op3_o_g!,string op3_op3_o_h!, string op3_op3_o_i!,string op3_op3_o_j!,string op3_op3_o_k!,string op3_op3_o_l!, string op3_op3_o_m!,string op3_op3_o_o!,string op3_op3_o_q!)
+
+relation op4_op4:op4_op4( string op4_op4_i_a?, string op4_op4_o_a!,string op4_op4_o_b!,string op4_op4_o_c!,string op4_op4_o_d!, string op4_op4_o_e!,string op4_op4_o_f!,string op4_op4_o_g!,string op4_op4_o_h!, string op4_op4_o_i!,string op4_op4_o_j!,string op4_op4_o_k!,string op4_op4_o_l!, string op4_op4_o_m!,string op4_op4_o_o!,string op4_op4_o_q!)
+
+relation op5_op5:op5_op5( string op5_op5_i_a?, string op5_op5_o_a!,string op5_op5_o_b!,string op5_op5_o_c!,string op5_op5_o_d!, string op5_op5_o_e!,string op5_op5_o_f!,string op5_op5_o_g!,string op5_op5_o_h!, string op5_op5_o_i!,string op5_op5_o_j!,string op5_op5_o_k!,string op5_op5_o_l!, string op5_op5_o_m!,string op5_op5_o_o!,string op5_op5_o_q!)
+
+relation op6_op6:op6_op6( string op6_op6_i_a?, string op6_op6_o_a!,string op6_op6_o_b!,string op6_op6_o_c!,string op6_op6_o_d!, string op6_op6_o_e!,string op6_op6_o_f!,string op6_op6_o_g!,string op6_op6_o_h!, string op6_op6_o_i!,string op6_op6_o_j!,string op6_op6_o_k!,string op6_op6_o_l!, string op6_op6_o_m!,string op6_op6_o_o!,string op6_op6_o_q!)
+
+relation op7_op7:op7_op7( string op7_op7_i_a?, string op7_op7_o_a!,string op7_op7_o_b!,string op7_op7_o_c!,string op7_op7_o_d!, string op7_op7_o_e!,string op7_op7_o_f!,string op7_op7_o_g!,string op7_op7_o_h!, string op7_op7_o_i!,string op7_op7_o_j!,string op7_op7_o_k!,string op7_op7_o_l!, string op7_op7_o_m!,string op7_op7_o_o!,string op7_op7_o_q!)
+
+relation op8_op8:op8_op8( string op8_op8_i_a?, string op8_op8_o_a!,string op8_op8_o_b!,string op8_op8_o_c!,string op8_op8_o_d!, string op8_op8_o_e!,string op8_op8_o_f!,string op8_op8_o_g!,string op8_op8_o_h!, string op8_op8_o_i!,string op8_op8_o_j!,string op8_op8_o_k!,string op8_op8_o_l!, string op8_op8_o_m!,string op8_op8_o_o!,string op8_op8_o_q!)
+
+relation op9_op9:op9_op9( string op9_op9_i_a?, string op9_op9_o_a!,string op9_op9_o_b!,string op9_op9_o_c!,string op9_op9_o_d!, string op9_op9_o_e!,string op9_op9_o_f!,string op9_op9_o_g!,string op9_op9_o_h!, string op9_op9_o_i!,string op9_op9_o_j!,string op9_op9_o_k!,string op9_op9_o_l!, string op9_op9_o_m!,string op9_op9_o_o!,string op9_op9_o_q!)
+
+relation op10_op10:op10_op10( string op10_op10_i_a?, string op10_op10_o_a!,string op10_op10_o_b!,string op10_op10_o_c!,string op10_op10_o_d!, string op10_op10_o_e!,string op10_op10_o_f!,string op10_op10_o_g!,string op10_op10_o_h!, string op10_op10_o_i!,string op10_op10_o_j!,string op10_op10_o_k!,string op10_op10_o_l!, string op10_op10_o_m!,string op10_op10_o_o!,string op10_op10_o_q!)
+
+relation op11_op11:op11_op11( string op11_op11_i_a?, string op11_op11_o_a!,string op11_op11_o_b!,string op11_op11_o_c!,string op11_op11_o_d!, string op11_op11_o_e!,string op11_op11_o_f!,string op11_op11_o_g!,string op11_op11_o_h!, string op11_op11_o_i!,string op11_op11_o_j!,string op11_op11_o_k!,string op11_op11_o_l!, string op11_op11_o_m!,string op11_op11_o_o!,string op11_op11_o_q!)
+
+relation op12_op12:op12_op12( string op12_op12_i_a?, string op12_op12_o_a!,string op12_op12_o_b!,string op12_op12_o_c!,string op12_op12_o_d!, string op12_op12_o_e!,string op12_op12_o_f!,string op12_op12_o_g!,string op12_op12_o_h!, string op12_op12_o_i!,string op12_op12_o_j!,string op12_op12_o_k!,string op12_op12_o_l!, string op12_op12_o_m!,string op12_op12_o_o!,string op12_op12_o_q!)
+
+relation op13_op13:op13_op13( string op13_op13_i_a?, string op13_op13_o_a!,string op13_op13_o_b!,string op13_op13_o_c!,string op13_op13_o_d!, string op13_op13_o_e!,string op13_op13_o_f!,string op13_op13_o_g!,string op13_op13_o_h!, string op13_op13_o_i!,string op13_op13_o_j!,string op13_op13_o_k!,string op13_op13_o_l!, string op13_op13_o_m!,string op13_op13_o_o!,string op13_op13_o_q!)
+
+relation op14_op14:op14_op14( string op14_op14_i_a?, string op14_op14_o_a!,string op14_op14_o_b!,string op14_op14_o_c!,string op14_op14_o_d!, string op14_op14_o_e!,string op14_op14_o_f!,string op14_op14_o_g!,string op14_op14_o_h!, string op14_op14_o_i!,string op14_op14_o_j!,string op14_op14_o_k!,string op14_op14_o_l!, string op14_op14_o_m!,string op14_op14_o_o!,string op14_op14_o_q!)
+
+relation op15_op15:op15_op15( string op15_op15_i_a?, string op15_op15_o_a!,string op15_op15_o_b!,string op15_op15_o_c!,string op15_op15_o_d!, string op15_op15_o_e!,string op15_op15_o_f!,string op15_op15_o_g!,string op15_op15_o_h!, string op15_op15_o_i!,string op15_op15_o_j!,string op15_op15_o_k!,string op15_op15_o_l!, string op15_op15_o_m!,string op15_op15_o_o!,string op15_op15_o_q!)
+
+relation op16_op16:op16_op16( string op16_op16_i_a?, string op16_op16_o_a!,string op16_op16_o_b!,string op16_op16_o_c!,string op16_op16_o_d!, string op16_op16_o_e!,string op16_op16_o_f!,string op16_op16_o_g!,string op16_op16_o_h!, string op16_op16_o_i!,string op16_op16_o_j!,string op16_op16_o_k!,string op16_op16_o_l!, string op16_op16_o_m!,string op16_op16_o_o!,string op16_op16_o_q!)
+
+relation op17_op17:op17_op17( string op17_op17_i_a?, string op17_op17_o_a!,string op17_op17_o_b!,string op17_op17_o_c!,string op17_op17_o_d!, string op17_op17_o_e!,string op17_op17_o_f!,string op17_op17_o_g!,string op17_op17_o_h!, string op17_op17_o_i!,string op17_op17_o_j!,string op17_op17_o_k!,string op17_op17_o_l!, string op17_op17_o_m!,string op17_op17_o_o!,string op17_op17_o_q!)
+
+relation op18_op18:op18_op18( string op18_op18_i_a?, string op18_op18_o_a!,string op18_op18_o_b!,string op18_op18_o_c!,string op18_op18_o_d!, string op18_op18_o_e!,string op18_op18_o_f!,string op18_op18_o_g!,string op18_op18_o_h!, string op18_op18_o_i!,string op18_op18_o_j!,string op18_op18_o_k!,string op18_op18_o_l!, string op18_op18_o_m!,string op18_op18_o_o!,string op18_op18_o_q!)
+
+relation op19_op19:op19_op19( string op19_op19_i_a?, string op19_op19_o_a!,string op19_op19_o_b!,string op19_op19_o_c!,string op19_op19_o_d!, string op19_op19_o_e!,string op19_op19_o_f!,string op19_op19_o_g!,string op19_op19_o_h!, string op19_op19_o_i!,string op19_op19_o_j!,string op19_op19_o_k!,string op19_op19_o_l!, string op19_op19_o_m!,string op19_op19_o_o!,string op19_op19_o_q!)
+
+relation op20_op20:op20_op20( string op20_op20_i_a?, string op20_op20_o_a!,string op20_op20_o_b!,string op20_op20_o_c!,string op20_op20_o_d!, string op20_op20_o_e!,string op20_op20_o_f!,string op20_op20_o_g!,string op20_op20_o_h!, string op20_op20_o_i!,string op20_op20_o_j!,string op20_op20_o_k!,string op20_op20_o_l!, string op20_op20_o_m!,string op20_op20_o_o!,string op20_op20_o_q!)
+
+relation op21_op21:op21_op21( string op21_op21_i_a?, string op21_op21_o_a!,string op21_op21_o_b!,string op21_op21_o_c!,string op21_op21_o_d!, string op21_op21_o_e!,string op21_op21_o_f!,string op21_op21_o_g!,string op21_op21_o_h!, string op21_op21_o_i!,string op21_op21_o_j!,string op21_op21_o_k!,string op21_op21_o_l!, string op21_op21_o_m!,string op21_op21_o_o!,string op21_op21_o_q!)
+
+function distance:distance(real lat1?, real lon1?, real lat2?, real lon2?)
+
+function sys:sum(real val?)
+
+function sys:avg(real val?)
+
+function sys:min(real val?)
+
+function sys:max(real val?)
+
+function sys:count(string att?)
+
+function sys:nn(string dataset?, real latAtt?, real lonAtt?)

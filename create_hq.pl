@@ -1,0 +1,1 @@
+../syntetic_hq_generator/create_hq.pl

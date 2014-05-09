@@ -1,0 +1,10 @@
+2_2
+FUNCTIONS
+   2 F Query Workflow:	[arc(corr_ab,out),arc(end_par,corr_ab),arc(in,par),arc(par,retr_a),arc(par,retr_b),arc(retr_a,end_par),arc(retr_b,end_par)]
+   4 F Query Workflow:	[arc(corr_ab,out),arc(in,retr_a),arc(retr_a,retr_b),arc(retr_b,corr_ab)]
+   4 F Query Workflow:	[arc(corr_ab,out),arc(in,retr_b),arc(retr_a,corr_ab),arc(retr_b,retr_a)]
+RELATIONS
+   2 R Query Workflow:	[arc(corr_ab,out),arc(end_par,corr_ab),arc(in,par),arc(par,retr_a),arc(par,retr_b),arc(retr_a,end_par),arc(retr_b,end_par)]
+   3 R Query Workflow:	[arc(corr_ab,out),arc(in,retr_a),arc(retr_a,retr_b),arc(retr_b,corr_ab)]
+   3 R Query Workflow:	[arc(corr_ab,out),arc(in,retr_b),arc(retr_a,corr_ab),arc(retr_b,retr_a)]
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------

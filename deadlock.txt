@@ -1,0 +1,38 @@
+INVALID
+					   arc(par,proj_a) arc(proj_a,end_par)
+arc(in,retr_a) arc(retr_a,corr_ab) arc(corr_ab,par)               arc(end_par,out)
+					   arc(par,retr_b) arc(retr_b,end_par)
+   [arc(corr_ab,par),arc(end_par,out),arc(in,retr_a),arc(par,proj_a),arc(par,retr_b),arc(proj_a,end_par),arc(retr_a,corr_ab),arc(retr_b,end_par)]
+
+-----------------
+INVALID
+arc(in,retr_a) arc(retr_a,corr_ab) arc(corr_ab,proj_a) arc(proj_a,retr_b) arc(retr_b,out)
+   [arc(corr_ab,proj_a),arc(in,retr_a),arc(proj_a,retr_b),arc(retr_a,corr_ab),arc(retr_b,out)]
+
+----------------
+INVALID
+arc(in,retr_a) arc(retr_a,corr_ab) arc(corr_ab,retr_b) arc(retr_b,proj_a) arc(proj_a,out)
+   [arc(corr_ab,retr_b),arc(in,retr_a),arc(proj_a,out),arc(retr_a,corr_ab),arc(retr_b,proj_a)]
+
+
+
+-----------------
+VALID
+   arc(par,retr_a) arc(retr_a,end_par)
+arc(in,par)               arc(end_par,corr_ab) arc(corr_ab,proj_a) arc(proj_a,out)
+   arc(par,retr_b) arc(retr_b,end_par)
+   [arc(corr_ab,proj_a),arc(end_par,corr_ab),arc(in,par),arc(par,retr_a),arc(par,retr_b),arc(proj_a,out),arc(retr_a,end_par),arc(retr_b,end_par)]
+   [arc(corr_ab,proj_a),arc(end_par,corr_ab),arc(in,par),arc(par,retr_a),arc(par,retr_b),arc(proj_a,out),arc(retr_a,end_par),arc(retr_b,end_par)]
+-----------------
+VALID
+arc(in,retr_b) arc(retr_b,retr_a) arc(retr_a,corr_ab) arc(corr_ab,proj_a) arc(proj_a,out)
+   [arc(corr_ab,proj_a),arc(in,retr_b),arc(proj_a,out),arc(retr_a,corr_ab),arc(retr_b,retr_a)]
+   [arc(corr_ab,proj_a),arc(in,retr_b),arc(proj_a,out),arc(retr_a,corr_ab),arc(retr_b,retr_a)]
+-----------------
+VALID
+arc(in,retr_a) arc(retr_a,retr_b) arc(retr_b,corr_ab) arc(corr_ab,proj_a) arc(proj_a,out)
+   [arc(corr_ab,proj_a),arc(in,retr_a),arc(proj_a,out),arc(retr_a,retr_b),arc(retr_b,corr_ab)]
+   [arc(corr_ab,proj_a),arc(in,retr_a),arc(proj_a,out),arc(retr_a,retr_b),arc(retr_b,corr_ab)]
+
+
+
