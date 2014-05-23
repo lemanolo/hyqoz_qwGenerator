@@ -1,12 +1,15 @@
-
 ID="${1}"
-SCO=`echo "${2}"|sed -e "s/\./::/g"`
-OUTPUTFILE="${3}"
+#SCO=`echo "${2}"|sed -e "s/\./::/g"`
+DTYPES=`echo "${2}"|sed -e "s/\./::/g"`
+DTFS=`echo "${3}"|sed -e "s/\./::/g"`
 NEXT_RELATION_SELECTION="${4}"
 SAFE_GENERATION="${5}"
 NO_REDUNDANT_RELATIONS="${6}"
 NEW_RELATIONS_COMPUTATION="${7}"
 MEMOIZATION="${8}"
+FLOW="${9}"
+WEIGHTING="${10}"
+
 if [[ "$MEMOIZATION" == "memoization" ]]; then
        echo "memoization"
        MEMOIZATION_VALUE="true"
@@ -15,11 +18,9 @@ else
        MEMOIZATION_VALUE="false"
 fi
 
-FLOW="${9}"
-
 export MAX_ATOM=$((2**17)) #131072
 
-OUTPUTFILENAME_PREFIX="SS_${ID}-${NEXT_RELATION_SELECTION}_${SAFE_GENERATION}_${NO_REDUNDANT_RELATIONS}_${NEW_RELATIONS_COMPUTATION}_${MEMOIZATION}_${FLOW}"
+OUTPUTFILENAME_PREFIX="SS_${ID}-${NEXT_RELATION_SELECTION}_${SAFE_GENERATION}_${NO_REDUNDANT_RELATIONS}_${NEW_RELATIONS_COMPUTATION}_${MEMOIZATION}_${FLOW}_${WEIGHTING}"
 OUTPUTFILENAME="output/${OUTPUTFILENAME_PREFIX}.txt"
 OUTPUTFILENAME_CLEAN="output/${OUTPUTFILENAME_PREFIX}_clean.txt"
 OUTPUTFILENAME_UNIQUE="output/${OUTPUTFILENAME_PREFIX}_unique.txt"
@@ -33,9 +34,10 @@ CONFIG_FILE="config.pl"
 
 TMP_OUTPUTFILENAME=`echo $OUTPUTFILENAME| sed -e "s/\\\\//\\\\\\\\\//"`
 
+#| sed -e "s/#SCO#/${SCO}/"   \
 cat ${CONFIG_FILE_LAYOUT}  \
-| sed -e "s/#SCO#/${SCO}/"   \
-| sed -e "s/#OUTPUTFILE#/${OUTPUTFILE}/"   \
+| sed -e "s/#DTYPES#/${DTYPES}/"   \
+| sed -e "s/#DTFS#/${DTFS}/"   \
 | sed -e "s/#OUTPUTFILENAME#/${TMP_OUTPUTFILENAME}/"  \
 | sed -e "s/#SAFE_GENERATION#/${SAFE_GENERATION}/"  \
 | sed -e "s/#NO_REDUNDANT_RELATIONS#/${NO_REDUNDANT_RELATIONS}/"  \
@@ -43,13 +45,14 @@ cat ${CONFIG_FILE_LAYOUT}  \
 | sed -e "s/#NEXT_RELATION_SELECTION#/${NEXT_RELATION_SELECTION}/"  \
 | sed -e "s/#MEMOIZATION#/${MEMOIZATION_VALUE}/"  \
 | sed -e "s/#FLOW#/${FLOW}/"  \
+| sed -e "s/#WEIGHTING#/${WEIGHTING}/"  \
 > ${CONFIG_FILE}
 
 
 #OUTPUTFILENAME=`echo "${OUTPUTFILENAME_PREFIX}" | sed -e "s/\\\//"`
 
 LOADFILE="load.pl"
-GOAL="generate_ss_for_sco(false)"
+GOAL="generate_ss_for_dtfs(false)"
 EXIT="halt"
 
 COMMAND="gprolog --init-goal ['${LOADFILE}'],['${CONFIG_FILE}'] --entry-goal ${GOAL} --query-goal ${EXIT}"

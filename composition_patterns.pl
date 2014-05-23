@@ -27,21 +27,19 @@ qw_pattern(independent,QW):-
 	unionAll([A,P,[in,out]],V),
 	QW=qw(A,P,V,E,in,out,cost(_,_,_)).
 
-qw_pattern(independent,QW):-
-       flow(cf),
-        A=[a,b],
-        P=[],
-        E=[ arc(in,a), arc(a,b), arc(b,out)],
-        unionAll([A,P,[in,out]],V),
-        QW=qw(A,P,V,E,in,out,cost(_,_,_)).
-
-qw_pattern(independent,QW):-
-       flow(cf),
-	A=[a,b],
-        P=[],
-        E=[ arc(in,b), arc(b,a), arc(a,out)],
-        unionAll([A,P,[in,out]],V),
-        QW=qw(A,P,V,E,in,out,cost(_,_,_)).
+%qw_pattern(independent,QW):-
+%        A=[a,b],
+%        P=[],
+%        E=[ arc(in,a), arc(a,b), arc(b,out)],
+%        unionAll([A,P,[in,out]],V),
+%        QW=qw(A,P,V,E,in,out,cost(_,_,_)).
+%
+%qw_pattern(independent,QW):-
+%	A=[a,b],
+%        P=[],
+%        E=[ arc(in,b), arc(b,a), arc(a,out)],
+%        unionAll([A,P,[in,out]],V),
+%        QW=qw(A,P,V,E,in,out,cost(_,_,_)).
 
 qw_pattern(concurrent,QW):-
         A=[a,b],
@@ -65,7 +63,6 @@ qw_pattern(dependent,QW):-
         QW=qw(A,P,V,E,in,out,cost(_,_,_)).
 
 
-%compose_qw(qw(_,_,_,E_p,_,_,_),ActivityA,ActivityB,qw(A,P,V,E,in,out,QW_COST)):-
 compose_qw(qw(_,_,_,E_p,_,_,_),SubQWA,SubQWB,qw(A,P,V,E,in,out,QW_COST)):-
 	%+Result
 	%arg(6,ActivityA,SubQWA),
@@ -101,7 +98,10 @@ compose_qw(qw(_,_,_,E_p,_,_,_),SubQWA,SubQWB,qw(A,P,V,E,in,out,QW_COST)):-
 	sort(P),
 	sort(V),
 	sort(E),
-	qw_cost(qw(A,P,V,E,in,out,QW_COST),QW_COST).
+       (
+              weighting(cost) -> qw_cost(qw(A,P,V,E,in,out,QW_COST),QW_COST)
+                               ; QW_COST=cost(0,0,0)
+       ).
 	
 %notrace.
 

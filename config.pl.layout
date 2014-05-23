@@ -1,18 +1,30 @@
 algorithm(naive2).
-sco(#SCO#).
+
+%%%sco(#SCO#).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% outputFile/1
+% dtypes/1
 %
-%VALUES: true | false
-%  -   true: uses a file for sinking the results
-%  -  false: uses the stdout for sinking the results
+%VALUES: List of aliases of (types) service methods
 %
+dtypes(#DTYPES#). 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% dtfs/1
+%
+%VALUES: List of dt-functions 
+%
+dtfs(#DTFS#). 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % outputFileName/1
 %
 %VALUES: 'string' with the file name for sinking the results
 %
-outputFile(#OUTPUTFILE#). 
 outputFileName('#OUTPUTFILENAME#').
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,5 +93,16 @@ memoization(#MEMOIZATION#).
 %  -      cf: The generation is done looking for controlflow shapes
 %
 flow(#FLOW#). 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% weighting/
+%
+%VALUES: cost | none
+%  -     cost: The qw cost is computed
+%  -     none: The qw cost is not computed
+%
+weighting(#WEIGHTING#). 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

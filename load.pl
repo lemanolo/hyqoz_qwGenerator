@@ -1,50 +1,36 @@
-:-initialization(consult('operators.pl')).
-%+FACTS
-:-initialization(consult('api_exp.pl')).
-:-initialization(consult('api_utils.pl')).
-%:-initialization(consult('queries.pl')).
-:-initialization(consult('queries_exp.pl')).
-:-initialization(consult('composition_patterns.pl')).
-%-FACTS
+%+COMMONS
+:-initialization(consult('../hyqoz_commons/operators.pl')).
+:-initialization(consult('../hyqoz_commons/api_utils.pl')).
+:-initialization(consult('../hyqoz_commons/utils.pl')).
+:-initialization(consult('../hyqoz_commons/utils_derivation.pl')).
+%+COMMONS APIS
+:-initialization(consult('../hyqoz_commons/api_exp.pl')).
+%-COMMONS APIS
+%-COMMONS
 
 
-%+FUNCTION DERIVATION
-%:-initialization(consult('rename.pl')).
-%:-initialization(consult('retrieval_utils.pl')).
-%:-initialization(consult('retrieval.pl')).
-%:-initialization(consult('binding_utils.pl')).
-%:-initialization(consult('binding.pl')).
-%:-initialization(consult('projection_utils.pl')).
-%:-initialization(consult('projection.pl')).
-%:-initialization(consult('filtering_utils.pl')).
-%:-initialization(consult('filtering.pl')).
-%:-initialization(consult('correlation.pl')).
-%:-initialization(consult('correlation_utils.pl')).
-:-initialization(consult('derivation.pl')).
-%-FUNCTION DERIVATION
+%+DTF DERIVATION
+:-initialization(consult('../hyqoz_dtfsDerivator/derivation.pl')).
+%-DTF DERIVATION
 
-%+RELATIONS CALCULATION
-:-initialization(consult('relations.pl')).
-%-RELATIONS CALCULATION
 
 %+CORE
+:-initialization(consult('relations.pl')).
+:-initialization(consult('composition_patterns.pl')).
 :-initialization(consult('merge_function.pl')).
-:-initialization(consult('qw_generation.pl')).
 :-initialization(consult('deadlock.pl')).
 :-initialization(consult('redundant.pl')).
 :-initialization(consult('algorithms.pl')).
-%+CORE
-
-:-initialization(consult('utils.pl')).
-:-initialization(consult('utils_derivation.pl')).
-
-:-initialization(consult('test_all.pl')).
+:-initialization(consult('is_dataflow.pl')).
+%-CORE
 
 
+:-initialization(consult('qw_generation.pl')).
 
-%COST
-:-initialization(consult('../qw_cost/qw_cost.pl')).
-:-initialization(consult('../qw_cost/activity_cost.pl')).
-:-initialization(consult('../qw_cost/qw_utils.pl')).
 
-%:-initialization(consult('config.pl')).
+%+QW COST
+:-initialization(consult('../hyqoz_qwWeighter/qw_cost.pl')).
+:-initialization(consult('../hyqoz_qwWeighter/activity_cost.pl')).
+:-initialization(consult('../hyqoz_qwWeighter/qw_utils.pl')).
+%-QW COST
+
