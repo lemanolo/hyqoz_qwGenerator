@@ -81,6 +81,75 @@ generate_ss_for_dtfs(DTFS,PerResult):-
        %-OUTPUT
 	nl,write('-------------------------------------------------------------------').
 
+generate_qws_from_java:-
+%+INITIALIZATION
+       clear_dtf_ids,
+       clear_memoization,
+       clear_types(_),
+       dtypes(TYPES), %Retrieve the list of data types type_name(Alias,Service::Method) defining the aliases of service methods
+       findall(_,(member(type_name(Alias,Service::Method), TYPES),assertz(type_name(Alias,Service::Method))),_),
+       dtfs(DTFS),    %Retrieve the list of dt-functions from the fact dtfs/1 asserted in config.pl
+       findall(tqw(QW,DTF),(member(DTF,DTFS),arg(4,DTF,IdDTF),create_uqw(IdDTF,QW)),TQWS),
+
+       findall(activity(IDActivity,DTF),(member(DTF,DTFS),arg(4,DTF,IDActivity)),ACTIVITIES),
+       sort(ACTIVITIES),
+%-INITIALIZATION
+
+       relations(DTFS,UnsafeRelations),
+
+%+SAFE RELATIONS
+	(
+        	safe_generation(safe)
+		-> safe_relations(UnsafeRelations,RedundantRelations)
+              %DEBUG                 ,nl,write('SAFE matrix:'),nl
+		; RedundantRelations=UnsafeRelations
+              %DEBUG                ,nl,write('UNSAFE matrix:'),nl
+	),
+       %DEBUG        print_graph(RedundantRelations),
+%-SAFE RELATIONS
+
+%	findall(_,(member(dependent(A,B),RedundantRelations),redundant(dependent(A,B),RedundantRelations)),_), nl,
+
+%+REDUNDANT RELATIONS
+	(
+		no_redundant_relations(true)
+		->eliminate_redundant_relations2(RedundantRelations,Relations)
+              %DEBUG	  	  ,nl,write('NO redundant matrix:'),nl
+		; Relations=RedundantRelations
+              %DEBUG		  ,nl,write('REDUNDANT matrix:'),nl
+	),
+       %DEBUG       	print_graph(Relations),
+%-REDUNDANT RELATIONS
+
+%+OUTPUT FILE
+       ( outputFileName(OutputFileName),OutputFileName\=none -> (outputFileName(OutputFileName),open(OutputFileName, write, QWSTREAM_REL))
+			                                         ; (QWSTREAM_REL=user_output)
+       ),
+	set_output(QWSTREAM_REL),
+%-OUTPUT FILE
+
+%+EXHAUSTIVE GENERATION
+       resetstepcounter_attempts,resetstepcounter_oks,resetstepcounter_fails,
+       naive2(Relations,TQWS,tqw(QW,DTF),0),
+       QW=qw(A,P,V,E,in,out,COST),
+       (
+             flow(df)-> is_dataflow(E)
+                      ; true
+       ),
+       sort(A),
+       sort(P),
+       sort(V),
+       sort(E),
+       nl,write('QW = '),write(qw(A,P,V,E,in,out,COST)),
+       nl,write('DTYPES = '),write(TYPES),
+       nl,write('ACTIVITIES = '),write(ACTIVITIES),
+       fail.
+%-EXHAUSTIVE GENERATION
+
+
+generate_qws_from_java:-!.
+
+
 execute_generation_by_Relations(UnsafeRels,DTFS,PerResult,QWSTREAM_REL):-
 	(
 		safe_generation(safe)

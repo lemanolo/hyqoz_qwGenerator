@@ -36,10 +36,10 @@ do
 	;;
        0) 
               if [ "$IS_COMMENTED" -eq 0 ]; then
-                     SEL=member    ; SAFE=unsafe ; NO_RED=false  ; COM=global; MEM=memoization;  FLOW=cf; WEIGHTING=cost; STATS=`sh run.sh $ID "${TYPES}" "${DTFS}" $SEL $SAFE $NO_RED $COM $MEM $FLOW $WEIGHTING | grep -v LOG | awk -F "$ID" '{print$3}'|tr '\n' ' '`; echo "$ID\t$SEL\t$SAFE\t$NO_RED\t$COM\t$MEM\t$FLOW\t$WEIGHTING $STATS"
+                     #SEL=member    ; SAFE=unsafe ; NO_RED=false  ; COM=global; MEM=memoization;  FLOW=cf; WEIGHTING=cost; STATS=`sh run.sh $ID "${TYPES}" "${DTFS}" $SEL $SAFE $NO_RED $COM $MEM $FLOW $WEIGHTING | grep -v LOG | awk -F "$ID" '{print$3}'|tr '\n' ' '`; echo "$ID\t$SEL\t$SAFE\t$NO_RED\t$COM\t$MEM\t$FLOW\t$WEIGHTING $STATS"
+                     #SEL=member    ; SAFE=unsafe ; NO_RED=false  ; COM=global; MEM=memoization;  FLOW=df; WEIGHTING=cost; STATS=`sh run.sh $ID "${TYPES}" "${DTFS}" $SEL $SAFE $NO_RED $COM $MEM $FLOW $WEIGHTING | grep -v LOG | awk -F "$ID" '{print$3}'|tr '\n' ' '`; echo "$ID\t$SEL\t$SAFE\t$NO_RED\t$COM\t$MEM\t$FLOW\t$WEIGHTING $STATS"
+                     #SEL=member    ; SAFE=safe ; NO_RED=false  ; COM=local; MEM=memoization;  FLOW=cf; WEIGHTING=cost; STATS=`sh run.sh $ID "${TYPES}" "${DTFS}" $SEL $SAFE $NO_RED $COM $MEM $FLOW $WEIGHTING | grep -v LOG | awk -F "$ID" '{print$3}'|tr '\n' ' '`; echo "$ID\t$SEL\t$SAFE\t$NO_RED\t$COM\t$MEM\t$FLOW\t$WEIGHTING $STATS"
                      SEL=member    ; SAFE=unsafe ; NO_RED=false  ; COM=global; MEM=memoization;  FLOW=df; WEIGHTING=cost; STATS=`sh run.sh $ID "${TYPES}" "${DTFS}" $SEL $SAFE $NO_RED $COM $MEM $FLOW $WEIGHTING | grep -v LOG | awk -F "$ID" '{print$3}'|tr '\n' ' '`; echo "$ID\t$SEL\t$SAFE\t$NO_RED\t$COM\t$MEM\t$FLOW\t$WEIGHTING $STATS"
-                     SEL=member    ; SAFE=safe ; NO_RED=false  ; COM=local; MEM=memoization;  FLOW=cf; WEIGHTING=cost; STATS=`sh run.sh $ID "${TYPES}" "${DTFS}" $SEL $SAFE $NO_RED $COM $MEM $FLOW $WEIGHTING | grep -v LOG | awk -F "$ID" '{print$3}'|tr '\n' ' '`; echo "$ID\t$SEL\t$SAFE\t$NO_RED\t$COM\t$MEM\t$FLOW\t$WEIGHTING $STATS"
-                     SEL=member    ; SAFE=safe ; NO_RED=false  ; COM=local; MEM=memoization;  FLOW=df; WEIGHTING=cost; STATS=`sh run.sh $ID "${TYPES}" "${DTFS}" $SEL $SAFE $NO_RED $COM $MEM $FLOW $WEIGHTING | grep -v LOG | awk -F "$ID" '{print$3}'|tr '\n' ' '`; echo "$ID\t$SEL\t$SAFE\t$NO_RED\t$COM\t$MEM\t$FLOW\t$WEIGHTING $STATS"
 
               fi
               IS_COMMENTED=0

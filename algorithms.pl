@@ -76,7 +76,7 @@ naive2(Relations,TQWS,TQW,Level):-
               ,fail)
 	),
 
-	NewDTF=..[NewIDDTF|_],
+	%NewDTF=..[NewIDDTF|_],
        %DEBUG	nl,write('            New DTF: '),write(NewIDDTF),
         difference([tqw(NewQW,NewDTF)|TQWS],[tqw(SubQWL,LDTF),tqw(SubQWR,RDTF)],NewTQWS),
 

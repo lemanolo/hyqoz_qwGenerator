@@ -3,7 +3,7 @@
 %                         arc(par,a),arc(a,end_par),
 %                         arc(par,b),arc(b,end_par),
 %			 	      arc(end_par,out)],
-%	new_atom(par_,PAR),
+%	my_new_atom(par_,4,PAR),
 %	atom_concat(par_,Suffix,PAR),
 %	atom_concat(end_par_,Suffix,ENDPAR),
 %	replace(arc(_,par),arc(_,PAR),PrePattern1,PrePattern2),
@@ -12,7 +12,7 @@
 %	replace(arc(end_par,_),arc(ENDPAR,_),PrePattern4,Pattern).
 
 qw_pattern(independent,QW):-
-	new_atom(par_,PAR),
+	my_new_atom(par_,4,PAR),
 	atom_concat(par_,Suffix,PAR),
 	atom_concat(end_par_,Suffix,ENDPAR),
 	%PAR=par,
@@ -27,20 +27,19 @@ qw_pattern(independent,QW):-
 	unionAll([A,P,[in,out]],V),
 	QW=qw(A,P,V,E,in,out,cost(_,_,_)).
 
-%qw_pattern(independent,QW):-
-%        A=[a,b],
-%        P=[],
-%        E=[ arc(in,a), arc(a,b), arc(b,out)],
-%        unionAll([A,P,[in,out]],V),
-%        QW=qw(A,P,V,E,in,out,cost(_,_,_)).
-%
-%qw_pattern(independent,QW):-
-%	A=[a,b],
-%        P=[],
-%        E=[ arc(in,b), arc(b,a), arc(a,out)],
-%        unionAll([A,P,[in,out]],V),
-%        QW=qw(A,P,V,E,in,out,cost(_,_,_)).
+qw_pattern(independent,QW):-
+        A=[a,b],
+        P=[],
+        E=[ arc(in,a), arc(a,b), arc(b,out)],
+        unionAll([A,P,[in,out]],V),
+        QW=qw(A,P,V,E,in,out,cost(_,_,_)).
 
+qw_pattern(independent,QW):-
+	A=[a,b],
+        P=[],
+        E=[ arc(in,b), arc(b,a), arc(a,out)],
+        unionAll([A,P,[in,out]],V),
+        QW=qw(A,P,V,E,in,out,cost(_,_,_)).
 qw_pattern(concurrent,QW):-
         A=[a,b],
         P=[],
