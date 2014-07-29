@@ -29,6 +29,7 @@
 
 
 %+QW COST
+:-initialization(consult('../hyqoz_qwWeighter/qos_measures.pl')).
 :-initialization(consult('../hyqoz_qwWeighter/qw_cost.pl')).
 :-initialization(consult('../hyqoz_qwWeighter/activity_cost.pl')).
 :-initialization(consult('../hyqoz_qwWeighter/qw_utils.pl')).
